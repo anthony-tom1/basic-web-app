@@ -35,5 +35,15 @@ export default function QueryProcessor(query: string): string {
     return String(firstNumber * secondNumber);
   }
 
+  if (query.toLowerCase().includes("minus")) {
+    const numbers = query.match(/\d+/g)
+    if (numbers == null || numbers.length < 2) {
+      return "Error";
+    }
+    const firstNumber = Number(numbers[0]);
+    const secondNumber = Number(numbers[1]);
+    return String(firstNumber - secondNumber);
+  }
+
   return "";
 }
