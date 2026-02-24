@@ -15,5 +15,25 @@ export default function QueryProcessor(query: string): string {
     return "amtom";
   }
 
+  if (query.toLowerCase().includes("plus")) {
+    const numbers = query.match(/\d+/g)
+    if (numbers == null || numbers.length < 2) {
+      return "Error";
+    }
+    const firstNumber = Number(numbers[0]);
+    const secondNumber = Number(numbers[1]);
+    return String(firstNumber + secondNumber);
+    }
+  
+  if (query.toLowerCase().includes("multiplied")) {
+    const numbers = query.match(/\d+/g)
+    if (numbers == null || numbers.length < 2) {
+      return "Error";
+    }
+    const firstNumber = Number(numbers[0]);
+    const secondNumber = Number(numbers[1]);
+    return String(firstNumber * secondNumber);
+  }
+
   return "";
 }
